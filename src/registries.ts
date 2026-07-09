@@ -7,12 +7,7 @@
  * `util/scripts/searchRegistry.js`.
  */
 
-import {
-  formatArray,
-  formatWikilink,
-  normalizeGitHubUrl,
-  type SoftwareFrontmatter,
-} from "./frontmatter";
+import { formatArray, formatWikilink, normalizeGitHubUrl, type SoftwareFrontmatter } from "./frontmatter";
 
 export interface SearchResult {
   /** Registry-native identifier passed back to `detail()`. */
@@ -117,10 +112,7 @@ const npm: Registry = {
       aliases: [],
       description: data.description || versionData.description || "",
       author: authorName ? [formatWikilink(authorName)] : [],
-      source_url:
-        data.homepage ||
-        versionData.homepage ||
-        `https://www.npmjs.com/package/${data.name || packageName}`,
+      source_url: data.homepage || versionData.homepage || `https://www.npmjs.com/package/${data.name || packageName}`,
       github_url: normalizeGitHubUrl(repository),
       image_url: "",
       platform: [],
@@ -137,9 +129,9 @@ const gem: Registry = {
   title: "RubyGems",
   placeholder: "Search Ruby gems…",
   async search(query) {
-    const data = await getJson<
-      Array<{ name: string; info?: string; authors?: string; version?: string }>
-    >(`https://rubygems.org/api/v1/search.json?query=${encodeURIComponent(query)}`);
+    const data = await getJson<Array<{ name: string; info?: string; authors?: string; version?: string }>>(
+      `https://rubygems.org/api/v1/search.json?query=${encodeURIComponent(query)}`,
+    );
     if (!Array.isArray(data)) return [];
     return data.map((g) => ({
       id: g.name,
@@ -183,10 +175,7 @@ const gem: Registry = {
       aliases: [],
       description: data.info || "",
       author: authors.map(formatWikilink),
-      source_url:
-        data.homepage_uri ||
-        data.project_uri ||
-        `https://rubygems.org/gems/${data.name || gemName}`,
+      source_url: data.homepage_uri || data.project_uri || `https://rubygems.org/gems/${data.name || gemName}`,
       github_url: normalizeGitHubUrl(data.source_code_uri ?? ""),
       image_url: "",
       platform: [formatWikilink("Ruby")],
@@ -446,9 +435,9 @@ const obsidian: Registry = {
     if (!plugin) return null;
 
     const [manifest, repo] = await Promise.all([
-      getJson<{ description?: string }>(
-        `https://raw.githubusercontent.com/${plugin.repo}/master/manifest.json`,
-      ).catch(() => null),
+      getJson<{ description?: string }>(`https://raw.githubusercontent.com/${plugin.repo}/master/manifest.json`).catch(
+        () => null,
+      ),
       getJson<{ description?: string; topics?: string[]; owner?: { avatar_url?: string } }>(
         `https://api.github.com/repos/${plugin.repo}`,
         { headers: githubHeaders(ctx) },

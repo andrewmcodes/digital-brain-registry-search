@@ -101,14 +101,7 @@ export default function Command() {
                 <Action.Push
                   icon={Icon.Document}
                   title="View Frontmatter"
-                  target={
-                    <FrontmatterView
-                      registryId={registryId}
-                      result={result}
-                      ctx={ctx}
-                      prefs={prefs}
-                    />
-                  }
+                  target={<FrontmatterView registryId={registryId} result={result} ctx={ctx} prefs={prefs} />}
                 />
               </ActionPanel>
             }
@@ -157,11 +150,7 @@ function FrontmatterView({
   }, []);
 
   const yaml = fm ? frontmatterToYAML(fm) : "";
-  const markdown = fm
-    ? `# ${fm.id}\n\n\`\`\`yaml\n${yaml}\n\`\`\``
-    : isLoading
-      ? "Loading…"
-      : "No data found.";
+  const markdown = fm ? `# ${fm.id}\n\n\`\`\`yaml\n${yaml}\n\`\`\`` : isLoading ? "Loading…" : "No data found.";
 
   async function copyFrontmatter() {
     await Clipboard.copy(yaml);
