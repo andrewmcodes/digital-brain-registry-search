@@ -1,0 +1,37 @@
+name: Bug Report
+description: Report something that isn't working as expected
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug, including which registry and search term.
+      placeholder: When I search "…" in the npm registry, …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: I expected …
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Search Registry
+        2. Select … registry
+        3. Type …
+    validations:
+      required: false
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Raycast version, macOS version, and extension version.
+      placeholder: Raycast 1.x, macOS 15.x, extension 1.0.0
+    validations:
+      required: false
