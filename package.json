@@ -1,6 +1,7 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "digital-brain-registry-search",
+  "version": "1.0.0",
   "title": "Digital Brain Registry Search",
   "description": "Search package registries (npm, RubyGems, GitHub, Homebrew, VS Code, Obsidian) and generate Obsidian software-note frontmatter or create notes directly in your vault.",
   "icon": "extension-icon.png",
@@ -48,6 +49,7 @@
     "@raycast/utils": "^2.2.7"
   },
   "devDependencies": {
+    "@andrewmcodes/prettier-config": "^2.1.0",
     "@raycast/eslint-config": "^2.2.0",
     "@types/node": "^26.1.1",
     "@types/react": "^19.0.10",
@@ -55,6 +57,7 @@
     "prettier": "^3.5.3",
     "typescript": "^5.8.2"
   },
+  "prettier": "@andrewmcodes/prettier-config",
   "scripts": {
     "build": "ray build -e dist",
     "dev": "ray develop",
