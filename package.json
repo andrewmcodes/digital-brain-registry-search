@@ -54,7 +54,7 @@
     "@types/node": "^26.1.1",
     "@types/react": "^19.0.10",
     "eslint": "^10.6.0",
-    "prettier": "^3.5.3",
+    "prettier": "^3.9.6",
     "typescript": "^5.8.2"
   },
   "prettier": "@andrewmcodes/prettier-config",
